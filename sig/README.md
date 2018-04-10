@@ -2,7 +2,7 @@
 
 Herokuへデプロイするためのボタンです。
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/NCMBMania/ncmb_server_v2/tree/master/sig)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/NCMBMania/ncmb_server_v2/sig/)
 
 ## 準備
 
