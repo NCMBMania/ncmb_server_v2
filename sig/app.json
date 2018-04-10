@@ -1,0 +1,15 @@
+{
+  "name": "NCMB Signature Server",
+  "description": "NCMBの署名処理をサーバサイドで行います",
+  "keywords": [
+    "mBaaS",
+    "NCMB"
+  ],
+  "repository": "https://github.com/NCMBMania/ncmb_server_v2",
+  "env": {
+    "CLIENT_KEY": {
+      "description": "NCMBのクライアントキーを指定してください",
+      "value": ""
+    }
+  }
+}
