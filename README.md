@@ -21,7 +21,7 @@ SIGNATURE_SERVERという変数が定義されていれば、指定されたURL�
 
 ### 署名サーバ
 
-署名サーバは [NCMBMania/sign_server_v2](https://github.com/NCMBMania/sign_server_v2) あります。Heroku などにデプロイして使ってください。
+署名サーバは [NCMBMania/sign_server_v2](https://github.com/NCMBMania/sign_server_v2) にあります。Heroku などにデプロイして使ってください。
 
 [NCMBMania/sign_server_v2](https://github.com/NCMBMania/sign_server_v2)
 
