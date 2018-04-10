@@ -15,6 +15,10 @@ var ncmb = new NCMB(applicationKey, clientKey)
 
 SIGNATURE_SERVERという変数が定義されていれば、指定されたURLへPOSTリクエストを行います。クライアントキーは適当なものを指定してください（エラー回避のためで、プログラム中では使われません）。
 
+### JavaScript SDK
+
+[こちら](https://github.com/NCMBMania/ncmb_server_v2/blob/master/sdk/ncmb.min.js) を使ってください。
+
 ### 署名サーバ
 
 署名サーバは [NCMBMania/sign_server_v2](https://github.com/NCMBMania/sign_server_v2) あります。Heroku などにデプロイして使ってください。
