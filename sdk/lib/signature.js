@@ -43,8 +43,8 @@ function create(url, method, query, timestamp,
       });
   } else {
     var sig = crypto
-          .createHmac("SHA256", clientkey || this.clientkey)
-          .update(sigStr).digest("base64");
+      .createHmac("SHA256", clientkey || this.clientkey)
+      .update(sigStr).digest("base64");
   }
   return sig;
 };

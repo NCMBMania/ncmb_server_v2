@@ -1,6 +1,7 @@
 "use strict";
 
-require("babel/polyfill");
+require('idempotent-babel-polyfill');
+
 var Url     = require("url");
 var qs      = require("qs");
 var request = require("superagent");
@@ -123,24 +124,25 @@ var sendRequest = function(opts, callback){
         .then(function(response) {
           param_sig.signature = response.body.sig;
           sendRequest.call(that, Object.assign(opts, param_sig), callback)
-            .then(function(response) {
-              res(response);
-            })
-            .catch(function(err) {
-              rej(err);
-            })
-        }, function(err) {
+        .then(function(response) {
+          res(response);
+        })
+        .catch(function(err) {
           rej(err);
         })
+      }, function(err) {
+        rej(err);
+      })
     });
   }
+  
   var headers = {
     "X-NCMB-Application-Key":    opts.apikey || this.apikey,
     "X-NCMB-Signature":          sig,
     "X-NCMB-Timestamp":          timestamp,
-    "X-NCMB-SDK-Version":        "javascript-2.2.1"
+    "X-NCMB-SDK-Version":        "javascript-3.0.1"
   };
-  
+
   if(!file)             headers["Content-Type"] = "application/json";
   if(this.sessionToken) headers["X-NCMB-Apps-Session-Token"] = this.sessionToken;
 
@@ -217,6 +219,20 @@ var sendRequest = function(opts, callback){
       }else{
         if(typeof query == "object") r.query(query);
         if(responseType && r.responseType) r.responseType(responseType);
+        if (method === "GET" && path.indexOf("/2013-09-01/files/") != -1) {
+          if (r.buffer) {
+            r.buffer(true).parse(function(res, callback) {
+              res.data = '';
+              res.setEncoding('binary');
+              res.on('data', function (chunk) {
+                res.data += chunk;
+              });
+              res.on('end', function () {
+                callback(null, new Buffer(res.data, 'binary'));
+              });
+            });
+          }
+        }
         r.end(_callback);
       }
     }
